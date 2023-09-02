@@ -6,13 +6,18 @@ import ColorPick from './color';
 export default function Home() {
   return (
     // 
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-10">
       <div className="z-10 max-w-5xl w-full font-mono">
         <p>
           Ex Controller
         </p>
       </div>
       <div>
+        <p>Primary</p>
+        <ColorPick></ColorPick>
+      </div>
+      <div>
+        <p>Secondary</p>
         <ColorPick></ColorPick>
       </div>
       <div className="flex flex-row max-w-xs w-full items-center">

@@ -1,48 +1,22 @@
 "use client"
 
 import React from 'react';
-import { HuePicker } from 'react-color';
+import Wheel from '@uiw/react-color-wheel';
+import { useState, Fragment } from 'react';
 
-class ColorPick extends React.Component {
-  state = {
-    background: '#fff',
-  };
+function ColorPick() {
+  const [color, setColor] = useState({ r: 255,  g: 255 ,b: 255, a: 1 });
+  const [hsva, setHsva] = useState({ h: 214, s: 43, v: 90, a: 1 });
 
-  handleChangeComplete = (color) => {
-    this.setState({ background: color.hex });
-  };
-
-  handleChange(color, event) {
-    // console.log(color, event)
-    // color = {
-    //   hex: '#333',
-    //   rgb: {
-    //     r: 51,
-    //     g: 51,
-    //     b: 51,
-    //     a: 1,
-    //   },
-    //   hsl: {
-    //     h: 0,
-    //     s: 0,
-    //     l: .20,
-    //     a: 1,
-    //   },
-    // }
+  const onChange = (color) => {
+      setColor(color.rgb);
   }
-
-  render() {
-    return (
-      <HuePicker
-        height='15px'
-        width='200px'
-        color={ this.state.background }
-        onChangeComplete={ this.handleChangeComplete }
-        onChange={ this.handleChange }
-        styles={{}}
-      />
-    );
-  }
+  return (
+      <Fragment>
+        <Wheel color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsva })} />
+        {/* <div style={{ width: '100%', height: 34, background: hsvaToHex(hsva) }}></div> */}
+      </Fragment>
+  )
 }
 
 export default ColorPick
